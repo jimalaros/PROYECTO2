@@ -5,9 +5,9 @@ import * as Pedido from "../controllers/pedidos.controller";
 
 router.get("/", Pedido.Pedidos);
 
-router.post("/", Pedido.CrearOrden);
+router.post("/Crear", Pedido.CrearOrden);
 
-router.post("/ordenar/:id", Pedido.Ordenar);
+router.post("/Ordenar/:id", Pedido.Ordenar);
 
 router.put("/:id", Pedido.ActualizarPedidos);
 
