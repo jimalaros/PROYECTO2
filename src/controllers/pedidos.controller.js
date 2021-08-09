@@ -1,7 +1,10 @@
-import Pedido from "../models/pedidos.model"
-//import Producto from "../models/productos.model"
+import Pedido from "../models/pedidos.model";
 //import * as Precio from "./payment.controller"
-import Producto from "../models/productos.model"
+import Producto from "../models/productos.model";
+import Usuario from "../models/usuarios.model";
+
+import jwt from "jsonwebtoken";
+import config from "../config"; 
 
 export const Pedidos = async (req,res) => {
     try {
@@ -14,11 +17,39 @@ export const Pedidos = async (req,res) => {
     }   
 };
 
+export const CrearOrden = async (req,res) =>
+{
+    try {
+        const bearerHeader = req.headers['authorization'];
+        if(bearerHeader)
+        {
+            const bearer = bearerHeader.split(" ");
+            const token = bearer[1];
+    
+            //Decodificar el token
+            const decoded = await jwt.verify(token, config.secret);
+            const id = decoded.id;
+            const user = await Usuario.findById(id);
+
+            const usuario = user.nombre;
+            const direccion = user.direccion;
+
+            const InicioOrden = new Pedido({ usuario, direccion });
+            await InicioOrden.save();
+            res.status(201).json({msg: 'Datos de la orden creados con exito'});
+        }
+        else { res.status(401).send({ auth: false, msg: "Ha olvidado el token" })}
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json(error);
+    }
+}
+
 export const Ordenar = async (req,res) =>
 {
     try {
         const {nombres, cantidades, mediodepago, estado} = req.body;
-        
+
         if(nombres && cantidades && mediodepago && estado)
         {
             const n = cantidades.length;
@@ -38,18 +69,11 @@ export const Ordenar = async (req,res) =>
                 let Q = cantidades[d]*precios[d];
                 precio=precio+Q;   
             }
-
-            //const precio = Precio(nombres, cantidades)
-
-            const nuevoPedido = new Pedido({
-                nombres, 
-                cantidades, 
-                mediodepago, 
-                estado,
-                precio
-            });
             
-            await nuevoPedido.save();
+            const Agregar = await Pedido.findById(req.params.id);
+            Agregar.pedidos.push({ nombres, cantidades, mediodepago, estado, precio });
+            
+            await Agregar.save();
             res.status(201).json({msg: 'Pedido creado con exito'});
         }
         else {res.status(204).json({msg: 'Faltan Datos'})}
