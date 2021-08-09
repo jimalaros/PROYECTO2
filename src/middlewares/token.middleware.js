@@ -11,6 +11,6 @@ export async function Verificar(req, res, next)
       .status(401)
       .send({ auth: false, msg: "Ha olvidado el token" });
   }
-  else { next(); }
+  else { next() }
   
 }

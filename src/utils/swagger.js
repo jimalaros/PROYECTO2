@@ -398,8 +398,8 @@ export const swaggerOptions = {
               "tags": [
                 "Pedidos"
               ],
-              "summary": "Para que los administradores vean todos los pedidos del sistema",
-              "description": "Los administradores podrán ver todos los pedidos registrados en el sistema",
+              "summary": "Para que los administradores y usuarios vean todos los pedidos realizados",
+              "description": "Los administradores y usuarios podrán ver todos los pedidos registrados en el sistema",
               "responses": {
                 "200": {
                   "description": "Ok",
@@ -432,38 +432,31 @@ export const swaggerOptions = {
               }
             }
           },
-          "/pedidos/historial/{id}": {
-            "get": {
+          "/pedidos": {
+            "post": {
               "tags": [
                 "Pedidos"
               ],
-              "summary": "Para que los usuarios vean todos los pedidos que han hecho",
-              "description": "Los usuarios podrán ver todos los pedidos realizados en el sistema",
-              "parameters": [
-                {
-                  "in": "path",
-                  "name": "id",
-                  "description": "Identificador del usuario",
-                  "required": true,
-                  "schema": {
-                    "type": "number",
-                    "example": 1
-                  }
-                }
-              ],
+              "summary": "Para empezar a llenar el esquema de pedidos",
+              "description": "Para empezar a llenar datos",
               "responses": {
-                "200": {
-                  "description": "Ok",
+                "201": {
+                  "description": "Created",
                   "content": {
                     "application/json": {
                       "schema": {
-                        "$ref": "#/components/schemas/Pedidoxid"
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                          }
+                        }
                       }
                     }
                   }
                 },
-                "204": {
-                  "description": "No Content",
+                "401": {
+                  "description": "Unauthorized",
                   "content": {
                     "application/json": {
                       "schema": {
@@ -480,22 +473,21 @@ export const swaggerOptions = {
               }
             }
           },
-          "/pedidos/CrearPedido/{id}": {
+          "/pedidos/ordenar/{id}": {
             "post": {
               "tags": [
                 "Pedidos"
               ],
-              "summary": "Para que los usuarios creen sus pedidos en el sistema",
-              "description": "Crear pedidos",
+              "summary": "Para que los usuarios terminen de crear sus pedidos en el sistema",
+              "description": "Para terminar de crear el pedido",
               "parameters": [
                 {
                   "in": "path",
                   "name": "id",
-                  "description": "Identificador del usuario",
                   "required": true,
                   "schema": {
-                    "type": "number",
-                    "example": 1
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73a"
                   }
                 }
               ],
@@ -524,8 +516,8 @@ export const swaggerOptions = {
                     }
                   }
                 },
-                "400": {
-                  "description": "Bad Request",
+                "204": {
+                  "description": "No content",
                   "content": {
                     "application/json": {
                       "schema": {
@@ -542,7 +534,7 @@ export const swaggerOptions = {
               }
             }
           },
-          "/pedidos/EditarPedido/{id}": {
+          "/pedidos/{id}": {
             "put": {
               "tags": [
                 "Pedidos"
@@ -556,7 +548,7 @@ export const swaggerOptions = {
                   "required": true,
                   "schema": {
                     "type": "number",
-                    "example": 1
+                    "example": "600b365c79bdd616403fc73a"
                   }
                 }
               ],

@@ -9,7 +9,7 @@ import productosRoutes from './routes/productos.routes';
 import ordenesRoutes from './routes/pedidos.routes';
 import MediosdePagoRoutes from './routes/MediodePago.routes';
 
-import * as options from './swagger'
+import * as options from './utils/swagger'
 const swaggerSpecs = swaggerJSDocs(options.swaggerOptions);
 
 app.use(express.json());

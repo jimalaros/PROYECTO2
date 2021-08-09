@@ -1,26 +1,35 @@
 import { Schema, model } from "mongoose";
 
-const ordenSchema = new Schema({
-    nombres: {
-        type: Array,
-        required: true
-    },
-    cantidades: {
-        type: Array,
-        required: true
-    },
-    mediodepago: {
+const PedidoSchema = new Schema({
+    usuario: {
         type: String,
-        required: true
+        required:true
     },
-    estado: {
+    direccion: {
         type: String,
-        required: true
+        required:true
     },
-    precio: {
-        type: Number,
-        required: true,
-    }
+    pedidos: [{
+        nombres: {
+            type: Array,
+            required: true
+        },
+        cantidades: {
+            type: Array,
+            required: true
+        },
+        mediodepago: {
+            type: String,
+            required: true
+        },
+        estado: {
+            type: String,
+            required: true
+        },
+        precio: {
+            type: Number,
+        }
+    }]
 });
 
-export default model('Orden', ordenSchema);
+export default model('Pedido', PedidoSchema);
