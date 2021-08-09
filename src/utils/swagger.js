@@ -432,7 +432,7 @@ export const swaggerOptions = {
               }
             }
           },
-          "/pedidos": {
+          "/pedidos/Crear": {
             "post": {
               "tags": [
                 "Pedidos"
@@ -473,7 +473,7 @@ export const swaggerOptions = {
               }
             }
           },
-          "/pedidos/ordenar/{id}": {
+          "/pedidos/Ordenar/{id}": {
             "post": {
               "tags": [
                 "Pedidos"
@@ -978,7 +978,8 @@ export const swaggerOptions = {
                 "nombres",
                 "cantidades",
                 "mediodepago",
-                "estado"
+                "estado",
+                "precio"
               ],
               "properties": {
                 "nombres": {
@@ -998,6 +999,9 @@ export const swaggerOptions = {
                 "estado": {
                   "type": "string",
                   "example": "Abierto"
+                },
+                "precio": {
+                  "type": "number"
                 }
               }
             },
