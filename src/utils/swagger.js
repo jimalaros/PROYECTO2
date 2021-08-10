@@ -534,7 +534,7 @@ export const swaggerOptions = {
               }
             }
           },
-          "/pedidos/{id}": {
+          "/pedidos/Editar/{id}": {
             "put": {
               "tags": [
                 "Pedidos"
@@ -547,7 +547,7 @@ export const swaggerOptions = {
                   "name": "id",
                   "required": true,
                   "schema": {
-                    "type": "number",
+                    "type": "string",
                     "example": "600b365c79bdd616403fc73a"
                   }
                 }
@@ -655,6 +655,44 @@ export const swaggerOptions = {
                 },
                 "401": {
                   "description": "Unauthorized",
+                }
+              }
+            }
+          },
+          "/pedidos/Eliminar/{id}": {
+            "delete": {
+              "tags": [
+                "Pedidos"
+              ],
+              "summary": "Para que los administradores eliminen pedidos del sistema",
+              "description": "Para eliminar alguno de los pedidos existentes",
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "id",
+                  "description": "Identificador del producto",
+                  "required": true,
+                  "schema": {
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73b"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Ok",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -978,14 +1016,13 @@ export const swaggerOptions = {
                 "nombres",
                 "cantidades",
                 "mediodepago",
-                "estado",
-                "precio"
+                "estado"
               ],
               "properties": {
                 "nombres": {
                   "type": "array",
                   "items": {},
-                  "example": ["Hamburguesa","Coca-cola"],
+                  "example": ["Hamburguesa","Coca cola"],
                 },
                 "cantidades": {
                   "type": "array",
@@ -999,9 +1036,6 @@ export const swaggerOptions = {
                 "estado": {
                   "type": "string",
                   "example": "Abierto"
-                },
-                "precio": {
-                  "type": "number"
                 }
               }
             },
