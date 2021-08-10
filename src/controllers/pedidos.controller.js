@@ -1,6 +1,5 @@
 import Pedido from "../models/pedidos.model";
-//import * as Precio from "./payment.controller"
-import Producto from "../models/productos.model";
+import { Precio } from "../controllers/Precio";
 import Usuario from "../models/usuarios.model";
 
 import jwt from "jsonwebtoken";
@@ -53,22 +52,7 @@ export const Ordenar = async (req,res) =>
         if(nombres && cantidades && mediodepago && estado)
         {
             const n = cantidades.length;
-
-            const vector = await Producto.find({nombre: {$in: nombres}});
-            const prices = vector.map(price => price.precio);
-
-            let precios=[];
-            for (let index = 0; index < n; index++) {
-                let p = prices[index];
-                precios.push(p);
-            }
-
-            let precio=0;
-            for (let d = 0; d < n; d++) 
-            {
-                let Q = cantidades[d]*precios[d];
-                precio=precio+Q;   
-            }
+            const precio = await Precio(n, nombres, cantidades);
             
             const Agregar = await Pedido.findById(req.params.id);
             Agregar.pedidos.push({...req.body, precio});
@@ -90,32 +74,18 @@ export const ActualizarPedidos = async (req, res) => {
     
     if(nombres && cantidades && mediodepago && estado)
     {
-
         const n = cantidades.length;
-        const vector = await Producto.find({nombre: {$in: nombres}});
-        const prices = vector.map(price => price.precio);
-        let precios=[];
-        for (let index = 0; index < n; index++) {
-            let p = prices[index];
-            precios.push(p);
-        }
-
-        let precio=0;
-        for (let d = 0; d < n; d++) 
-        {
-            let Q = cantidades[d]*precios[d];
-            precio=precio+Q;   
-        }
+        const precio = await Precio(n, nombres, cantidades);
+        const { id } = req.params;
+        //const updates = {...req.body, precio};
+        //const options = { new: true };
         
-        const updates = {...req.body, precio};
-        const options = { new: true };
-
-        const Agregar = await Pedido.findById(req.params.id);
-        const pedido = Agregar.pedidos;
-        //console.log(pedido[0]._id);
-        const id = pedido[0]._id;
-        const Update = await Pedido.findByIdAndUpdate(id, updates, options);
-        res.status(200).json({msg: 'Pedido editado con exito'});
+        const Agregar = await Pedido.findById(id);
+        Agregar.pedidos.splice(0,2)
+        Agregar.pedidos.push({...req.body, precio});
+            
+        await Agregar.save();
+        res.status(201).json({msg: 'Pedido creado con exito'});
     }
     else {res.status(204).json({msg: 'Faltan Datos'})}
 };
