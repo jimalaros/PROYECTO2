@@ -9,7 +9,7 @@ router.post("/Crear", Pedido.CrearOrden);
 
 router.post("/Ordenar/:id", Pedido.Ordenar);
 
-router.put("/:id", Pedido.ActualizarPedidos);
+router.put("/Editar/:id", Pedido.ActualizarPedidos);
 
 router.delete("/Eliminar/:id", Pedido.EliminarPedidos);
 
