@@ -866,8 +866,8 @@ export const swaggerOptions = {
                   "description": "Identificador del medio de pago a eliminar",
                   "required": true,
                   "schema": {
-                    "type": "number",
-                    "example": 1
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73b"
                   }
                 }
               ],
