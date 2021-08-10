@@ -22,7 +22,7 @@ npm init -y
 ```
 
 ```
-npm i express dotenv jest supertest helmet jsonwebtoken moongose morgan 
+npm i express dotenv bcryptjs jest supertest helmet jsonwebtoken moongose swagger-jsdoc swagger-ui-express 
 ```
 
 ```
@@ -38,7 +38,7 @@ npm start
 3. Dirigirse a la documentación de Swagger en el siguiente [link](https://localhost:5000/api-docs/)
 
 
-4. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, con este usuario tienes acceso a todas las rutas de la API REST.
+4. El único usuario administrador es jimalaros25@gmail.com y su clave es 12345, al insertar estos datos en la ruta Login obtendrás el token que te dará acceso a las demás rutas de la API.
 
 ## Las rutas
 
@@ -67,11 +67,22 @@ _Para iniciar sesión con el nuevo usuario en la ruta "Login", tendrás que llen
     "contraseña":"2222"
 }
 ```
+Importante: Al registrar un nuevo usuario, este obtendrá un token con el cuál podrás acceder a las demás rutas.
 
 ### Ruta PEDIDOS
 
-_Para crear un pedido tendrás que llenar el siguiente esquema en el body:_
+_Para crear los pedidos, se trabajo con un concepto denominado nested documents, por lo cuál tendrás que loggearte (Ruta login) y en la ruta Crear (Pedidos) obtendrás algo como lo siguiente:_
 
+```
+{
+    "_id":600b365c79bdd616403fc73b,
+    "nombre":"Jimmy",
+    "direccion":"Carrera 14 #30-59",
+    "pedidos": []
+}
+```
+
+_Para llenar el array vacío de productos, tendrás que pasarle el id generado anteriormente y llenar el siguiente esquema en el body de la ruta Ordenar:_
 ```
 {
     "nombres":["Hamburguesa doble", "Coca-cola"],
@@ -83,7 +94,7 @@ _Para crear un pedido tendrás que llenar el siguiente esquema en el body:_
 
 De la siguiente manera: 
 
-* Para el body, el vector "nombres" se puede llenar con tantos nombres de productos como se desee, aunque hay 8 en el sistema, se pueden repetir, siempre y cuando estos existan dentro de la lista de productos, también es importante recalcar que se debe respetar la escritura, cualquier producto escrito de mala manera, hará que el programa presente un error del tipo: _cannot calculated price of undefined_.
+* Para el body, el vector "nombres" se puede llenar con tantos nombres de productos como se desee, aunque hay unos predeterminados en el sistema, se pueden repetir, siempre y cuando estos existan dentro de la lista de productos, también es importante recalcar que se debe respetar la escritura, cualquier producto escrito de mala manera, hará que el programa presente un error del tipo: _cannot calculated price of undefined_.
 
 * El vector "cantidades" tiene que tener la misma longitud del vector "nombres", es decir, cada producto escrito en el vector "nombres" debe tener su cantidad correspondiente.
 
