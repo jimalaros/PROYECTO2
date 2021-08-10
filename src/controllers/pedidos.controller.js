@@ -71,7 +71,7 @@ export const Ordenar = async (req,res) =>
             }
             
             const Agregar = await Pedido.findById(req.params.id);
-            Agregar.pedidos.push({ nombres, cantidades, mediodepago, estado, precio });
+            Agregar.pedidos.push({...req.body, precio});
             
             await Agregar.save();
             res.status(201).json({msg: 'Pedido creado con exito'});
@@ -90,6 +90,7 @@ export const ActualizarPedidos = async (req, res) => {
     
     if(nombres && cantidades && mediodepago && estado)
     {
+
         const n = cantidades.length;
         const vector = await Producto.find({nombre: {$in: nombres}});
         const prices = vector.map(price => price.precio);
@@ -105,13 +106,16 @@ export const ActualizarPedidos = async (req, res) => {
             let Q = cantidades[d]*precios[d];
             precio=precio+Q;   
         }
+        
+        const updates = {...req.body, precio};
+        const options = { new: true };
 
-        await Pedido.findByIdAndUpdate(req.params.id, precio, req.body,
-            {
-                new: true,
-            }
-        );
-        res.status(201).json({msg: 'Pedido editado con exito'});
+        const Agregar = await Pedido.findById(req.params.id);
+        const pedido = Agregar.pedidos;
+        //console.log(pedido[0]._id);
+        const id = pedido[0]._id;
+        const Update = await Pedido.findByIdAndUpdate(id, updates, options);
+        res.status(200).json({msg: 'Pedido editado con exito'});
     }
     else {res.status(204).json({msg: 'Faltan Datos'})}
 };
