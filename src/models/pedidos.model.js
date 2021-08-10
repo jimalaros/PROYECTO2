@@ -27,8 +27,7 @@ const PedidoSchema = new Schema({
             required: true
         },
         precio: {
-            type: Number,
-            required: true
+            type: Number
         }
     }]
 });
