@@ -62,22 +62,35 @@ export const CrearProducto = async (req, res) => {
 };
   
 export const ActualizarProductos = async (req, res) => {
-    const { nombre, precio } = req.body;
-    if(nombre && precio)
-    {
-        await Producto.findByIdAndUpdate(req.params.id);
-        res.status(200).json({msg: 'Producto editado con exito'});
+    try {
+        const { nombre, precio } = req.body;
+        if(nombre && precio)
+        {
+            const { id } = req.params;
+            const updates = {...req.body};
+            const options = { new: true };
+            await Producto.findByIdAndUpdate(id, updates, options);
+            res.status(200).json({msg: 'Producto editado con exito'});
+        }
+        else { res.status(204).json({msg: 'Faltan datos'}) }    
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);
     }
-    else { res.status(204).json({msg: 'Faltan datos'}) }
+    
 };
   
 export const EliminarProductos = async (req, res) => {
-    const { id } = req.params;
-    
-    if(id)
-    {
-        await Producto.findByIdAndDelete(id);
-        res.status(200).json({msg: "El producto fue eliminado con exito"});
-    }
-    else { res.status(204).json({msg: 'Faltan datos'}) }
+    try {
+        const { id } = req.params;
+        if(id)
+        {
+            await Producto.findByIdAndDelete(id);
+            res.status(200).json({msg: "El producto fue eliminado con exito"});
+        }
+        else { res.status(204).json({msg: 'Faltan datos'}) }   
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);  
+    } 
 };

@@ -69,31 +69,36 @@ export const Ordenar = async (req,res) =>
 }
 
 export const ActualizarPedidos = async (req, res) => {
+    try {
+        const {nombres, cantidades, mediodepago, estado} = req.body;
     
-    const {nombres, cantidades, mediodepago, estado} = req.body;
-    
-    if(nombres && cantidades && mediodepago && estado)
-    {
-        const n = cantidades.length;
-        const precio = await Precio(n, nombres, cantidades);
-        const { id } = req.params;
-        //const updates = {...req.body, precio};
-        //const options = { new: true };
+        if(nombres && cantidades && mediodepago && estado)
+        {
+            const n = cantidades.length;
+            const precio = await Precio(n, nombres, cantidades);
+            const { id } = req.params;
         
-        const Agregar = await Pedido.findById(id);
-        Agregar.pedidos.splice(0,2)
-        Agregar.pedidos.push({...req.body, precio});
+            const Agregar = await Pedido.findById(id);
+            Agregar.pedidos.splice(0,2);
+            Agregar.pedidos.push({...req.body, precio});
             
-        await Agregar.save();
-        res.status(201).json({msg: 'Pedido creado con exito'});
+            await Agregar.save();
+            res.status(201).json({msg: 'Pedido creado con exito'});
+        }
+        else {res.status(204).json({msg: 'Faltan Datos'})}    
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json(error);
     }
-    else {res.status(204).json({msg: 'Faltan Datos'})}
 };
   
 export const EliminarPedidos = async (req, res) => {
-    const { id } = req.params;
-  
-    await Pedido.findByIdAndDelete(id);
-  
-    res.status(200).json({msg: "Pedido eliminado con exito"});
+    try {
+        const { id } = req.params;
+        await Pedido.findByIdAndDelete(id);
+        res.status(200).json({msg: "Pedido eliminado con exito"});    
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json(error);
+    }
 };
