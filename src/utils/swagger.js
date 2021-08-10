@@ -720,6 +720,7 @@ export const swaggerOptions = {
                 }
               }
             },
+          "/mediosdepago/nuevos": {
             "post": {
               "tags": [
                 "MediosDePago"
@@ -736,6 +737,21 @@ export const swaggerOptions = {
                 }
               },
               "responses": {
+                "400": {
+                  "description": "Bad Request",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "err": {
+                            "type": "string",
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
                 "201": {
                   "description": "Created",
                   "content": {
@@ -772,7 +788,7 @@ export const swaggerOptions = {
               }
             }
           },
-          "/mediosdepago/EditarMedioDePago/{id}": {
+          "/mediosdepago/{id}": {
             "put": {
               "tags": [
                 "MediosDePago"
@@ -785,8 +801,8 @@ export const swaggerOptions = {
                   "name": "id",
                   "required": true,
                   "schema": {
-                    "type": "number",
-                    "example": 1
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73b"
                   }
                 }
               ],
@@ -830,28 +846,13 @@ export const swaggerOptions = {
                     }
                   }
                 },
-                "400": {
-                  "description": "Bad request",
-                  "content": {
-                    "application/json": {
-                      "schema": {
-                        "type": "object",
-                        "properties": {
-                          "msg": {
-                            "type": "string",
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
                 "401": {
                   "description": "Unauthorized",
                 }
               }
             }
           },
-          "/mediosdepago/EliminarMedioDePago/{id}": {
+          "/mediosdepago/Eliminar/{id}": {
             "delete": {
               "tags": [
                 "MediosDePago"
@@ -871,21 +872,6 @@ export const swaggerOptions = {
                 }
               ],
               "responses": {
-                "400": {
-                  "description": "Bad Request",
-                  "content": {
-                    "application/json": {
-                      "schema": {
-                        "type": "object",
-                        "properties": {
-                          "err": {
-                            "type": "string",
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
                 "200": {
                   "description": "Ok",
                   "content": {
@@ -1001,10 +987,10 @@ export const swaggerOptions = {
             "MedioDePago": {
               "type": "object",
               "required": [
-                "mediodepago"
+                "nombre"
               ],
               "properties": {
-                "mediodepago": {
+                "nombre": {
                   "type": "string",
                   "example": "Daviplata"
                 }
@@ -1061,4 +1047,5 @@ export const swaggerOptions = {
         }
       },
       apis: ['./src/routes*.js']
-  };
+  }
+};
