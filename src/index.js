@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 import './basededatos';
 import swaggerUI from 'swagger-ui-express';
-import swaggerJSDocs from 'swagger-jsdoc';
+import swaggerJSDoc from 'swagger-jsdoc';
 
 import usuariosRoutes from './routes/usuarios.routes';
 import productosRoutes from './routes/productos.routes';
@@ -10,7 +10,7 @@ import ordenesRoutes from './routes/pedidos.routes';
 import MediosdePagoRoutes from './routes/MediodePago.routes';
 
 import * as options from './utils/swagger'
-const swaggerSpecs = swaggerJSDocs(options.swaggerOptions);
+const swaggerSpecs = swaggerJSDoc(options.swaggerOptions);
 
 app.use(express.json());
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs))
