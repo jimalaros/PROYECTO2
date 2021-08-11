@@ -53,7 +53,7 @@ export const CrearMediodePago = async (req, res) => {
                 res.status(201).json({msg:'Medio de Pago creado con exito'});
             }
         }
-        else { res.status(204).json({msg: 'Faltan datos'}) }
+        else { res.status(400).json({msg: 'Faltan datos'}) }
     }
     catch (error) {
         console.log(error);
@@ -72,7 +72,7 @@ export const ActualizarMediosdePago = async (req, res) => {
             await MediodePago.findByIdAndUpdate(id, updates, options);
             res.status(200).json({msg: 'Medio de Pago editado con exito'});
         }
-        else { res.status(204).json({msg: 'Faltan datos'}) }    
+        else { res.status(400).json({msg: 'Faltan datos'}) }    
     } catch (error) {
         console.log(error);
         return res.status(500).json(error);

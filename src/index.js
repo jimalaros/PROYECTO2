@@ -20,8 +20,9 @@ app.use('/usuarios', usuariosRoutes);
 app.use('/productos', productosRoutes);
 app.use('/pedidos', ordenesRoutes);
 app.use('/mediosdepago', MediosdePagoRoutes);
-//app.use(basicAuth({ authorizer: autorización }));
 
 app.listen(app.get('puerto'), () => { 
     console.log('Escuchando en el puerto ', app.get('puerto')) 
 });
+
+export default app;

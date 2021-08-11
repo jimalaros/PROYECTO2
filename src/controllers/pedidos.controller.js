@@ -9,7 +9,7 @@ export const Pedidos = async (req,res) => {
     try {
         const pedidos = await Pedido.find();
         if(pedidos) { res.json(pedidos) }
-        else {res.status(204).json({msg: 'Faltan Datos'})}
+        else {res.status(400).json({msg: 'Faltan Datos'})}
     } catch (error) {
         console.error(error);
         return res.status(500).json(error);
@@ -60,7 +60,7 @@ export const Ordenar = async (req,res) =>
             await Agregar.save();
             res.status(201).json({msg: 'Pedido creado con exito'});
         }
-        else {res.status(204).json({msg: 'Faltan Datos'})}
+        else {res.status(400).json({msg: 'Faltan Datos'})}
     }
     catch (error) {
         console.error(error);
@@ -85,7 +85,7 @@ export const ActualizarPedidos = async (req, res) => {
             await Agregar.save();
             res.status(201).json({msg: 'Pedido creado con exito'});
         }
-        else {res.status(204).json({msg: 'Faltan Datos'})}    
+        else {res.status(400).json({msg: 'Faltan Datos'})}    
     } catch (error) {
         console.error(error);
         return res.status(500).json(error);
