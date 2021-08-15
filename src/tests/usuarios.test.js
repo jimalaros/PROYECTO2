@@ -1,11 +1,11 @@
-import request from "supertest";
-import { app } from "../index.js";
+import request from 'supertest';
+import app from '../index';
 
 /**
  * testing usuarios
  */
 
-it('respond with json contaning a list of all users', done =>{
+it('respond with json contaning a list of all users', (done) => {
     request(app)
         .get('/usuarios')
         .set('application/json')
