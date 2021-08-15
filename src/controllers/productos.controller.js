@@ -72,11 +72,19 @@ export const ActualizarProductos = async (req, res) => {
             await Producto.findByIdAndUpdate(id, updates, options);
             res.status(200).json({msg: 'Producto editado con exito'});
         }
+<<<<<<< HEAD
         else { res.status(400).json({msg: 'Faltan datos'}) }    
+=======
+        else { res.status(204).json({msg: 'Faltan datos'}) }    
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
     } catch (error) {
         console.log(error);
         return res.status(500).json(error);
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
 };
   
 export const EliminarProductos = async (req, res) => {
@@ -87,9 +95,17 @@ export const EliminarProductos = async (req, res) => {
             await Producto.findByIdAndDelete(id);
             res.status(200).json({msg: "El producto fue eliminado con exito"});
         }
+<<<<<<< HEAD
         else { res.status(400).json({msg: 'Faltan datos'}) }   
+=======
+        else { res.status(204).json({msg: 'Faltan datos'}) }   
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
     } catch (error) {
         console.log(error);
         return res.status(500).json(error);  
     } 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1

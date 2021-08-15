@@ -53,7 +53,11 @@ export const CrearMediodePago = async (req, res) => {
                 res.status(201).json({msg:'Medio de Pago creado con exito'});
             }
         }
+<<<<<<< HEAD
         else { res.status(400).json({msg: 'Faltan datos'}) }
+=======
+        else { res.status(204).json({msg: 'Faltan datos'}) }
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
     }
     catch (error) {
         console.log(error);
@@ -72,7 +76,11 @@ export const ActualizarMediosdePago = async (req, res) => {
             await MediodePago.findByIdAndUpdate(id, updates, options);
             res.status(200).json({msg: 'Medio de Pago editado con exito'});
         }
+<<<<<<< HEAD
         else { res.status(400).json({msg: 'Faltan datos'}) }    
+=======
+        else { res.status(204).json({msg: 'Faltan datos'}) }    
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
     } catch (error) {
         console.log(error);
         return res.status(500).json(error);
@@ -90,4 +98,8 @@ export const EliminarMediosdePago = async (req, res) => {
         console.log(error);
         return res.status(500).json(error);
     }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1

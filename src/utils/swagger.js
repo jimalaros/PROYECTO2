@@ -391,6 +391,7 @@ export const swaggerOptions = {
                 "description": "Unauthorized",
               }
             }
+<<<<<<< HEAD
           }
         },
         "/pedidos": {
@@ -407,6 +408,24 @@ export const swaggerOptions = {
                   "application/json": {
                     "schema": {
                       "$ref": "#/components/schemas/Pedido"
+=======
+          },
+          "/pedidos": {
+            "get": {
+              "tags": [
+                "Pedidos"
+              ],
+              "summary": "Para que los administradores y usuarios vean todos los pedidos realizados",
+              "description": "Los administradores y usuarios podrán ver todos los pedidos registrados en el sistema",
+              "responses": {
+                "200": {
+                  "description": "Ok",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Pedido"
+                      }
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                     }
                   }
                 }
@@ -430,6 +449,7 @@ export const swaggerOptions = {
                 "description": "Unauthorized",
               }
             }
+<<<<<<< HEAD
           }
         },
         "/pedidos/Crear": {
@@ -449,10 +469,32 @@ export const swaggerOptions = {
                       "properties": {
                         "msg": {
                           "type": "string",
+=======
+          },
+          "/pedidos/Crear": {
+            "post": {
+              "tags": [
+                "Pedidos"
+              ],
+              "summary": "Para empezar a llenar el esquema de pedidos",
+              "description": "Para empezar a llenar datos",
+              "responses": {
+                "201": {
+                  "description": "Created",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                          }
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                         }
                       }
                     }
                   }
+<<<<<<< HEAD
                 }
               },
               "401": {
@@ -464,6 +506,19 @@ export const swaggerOptions = {
                       "properties": {
                         "err": {
                           "type": "string",
+=======
+                },
+                "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "err": {
+                            "type": "string",
+                          }
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                         }
                       }
                     }
@@ -471,6 +526,7 @@ export const swaggerOptions = {
                 }
               }
             }
+<<<<<<< HEAD
           }
         },
         "/pedidos/Ordenar/{id}": {
@@ -496,6 +552,24 @@ export const swaggerOptions = {
                 "application/json": {
                   "schema": {
                     "$ref": "#/components/schemas/Pedido"
+=======
+          },
+          "/pedidos/Ordenar/{id}": {
+            "post": {
+              "tags": [
+                "Pedidos"
+              ],
+              "summary": "Para que los usuarios terminen de crear sus pedidos en el sistema",
+              "description": "Para terminar de crear el pedido",
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "id",
+                  "required": true,
+                  "schema": {
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73a"
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                   }
                 }
               }
@@ -514,6 +588,7 @@ export const swaggerOptions = {
                       }
                     }
                   }
+<<<<<<< HEAD
                 }
               },
               "204": {
@@ -525,6 +600,19 @@ export const swaggerOptions = {
                       "properties": {
                         "err": {
                           "type": "string",
+=======
+                },
+                "204": {
+                  "description": "No content",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "err": {
+                            "type": "string",
+                          }
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                         }
                       }
                     }
@@ -532,6 +620,7 @@ export const swaggerOptions = {
                 }
               }
             }
+<<<<<<< HEAD
           }
         },
         "/pedidos/Editar/{id}": {
@@ -557,6 +646,24 @@ export const swaggerOptions = {
                 "application/json": {
                   "schema": {
                     "$ref": "#/components/schemas/Pedido"
+=======
+          },
+          "/pedidos/Editar/{id}": {
+            "put": {
+              "tags": [
+                "Pedidos"
+              ],
+              "summary": "Para que los usuarios editen pedidos mientras no los hayan confirmado",
+              "description": "Para editar propiedades de los pedidos existentes",
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "id",
+                  "required": true,
+                  "schema": {
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73a"
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                   }
                 }
               }
@@ -657,6 +764,7 @@ export const swaggerOptions = {
                 "description": "Unauthorized",
               }
             }
+<<<<<<< HEAD
           }
         },
         "/pedidos/Eliminar/{id}": {
@@ -689,11 +797,67 @@ export const swaggerOptions = {
                         "msg": {
                           "type": "string",
                         }
+=======
+          },
+          "/pedidos/Eliminar/{id}": {
+            "delete": {
+              "tags": [
+                "Pedidos"
+              ],
+              "summary": "Para que los administradores eliminen pedidos del sistema",
+              "description": "Para eliminar alguno de los pedidos existentes",
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "id",
+                  "description": "Identificador del producto",
+                  "required": true,
+                  "schema": {
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73b"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Ok",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                          }
+                        }
                       }
                     }
                   }
                 }
               }
+            }
+          },
+          "/mediosdepago": {
+            "get": {
+              "tags": [
+                "MediosDePago"
+              ],
+              "summary": "Para que los administradores vean todos los medios de pago del sistema",
+              "description": "Para que los administradores vean los medios de pago registrados en el sistema",
+              "responses": {
+                "200": {
+                  "description": "Ok",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/MedioDePago"
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
+                      }
+                    }
+                  }
+                }
+              }
+<<<<<<< HEAD
             }
           }
         },
@@ -707,6 +871,17 @@ export const swaggerOptions = {
             "responses": {
               "200": {
                 "description": "Ok",
+=======
+            },
+          "/mediosdepago/nuevos": {
+            "post": {
+              "tags": [
+                "MediosDePago"
+              ],
+              "summary": "Para que los administradores creen medios de pago en el sistema",
+              "description": "Crear nuevos medios de pago",
+              "requestBody": {
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                 "content": {
                   "application/json": {
                     "schema": {
@@ -715,6 +890,7 @@ export const swaggerOptions = {
                   }
                 }
               },
+<<<<<<< HEAD
               "401": {
                 "description": "Unauthorized",
               }
@@ -732,6 +908,75 @@ export const swaggerOptions = {
                 "application/json": {
                   "schema": {
                     "$ref": "#/components/schemas/MedioDePago"
+=======
+              "responses": {
+                "400": {
+                  "description": "Bad Request",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "err": {
+                            "type": "string",
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "201": {
+                  "description": "Created",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "204": {
+                  "description": "No Content",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "err": {
+                            "type": "string",
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "401": {
+                  "description": "Unauthorized",
+                }
+              }
+            }
+          },
+          "/mediosdepago/{id}": {
+            "put": {
+              "tags": [
+                "MediosDePago"
+              ],
+              "summary": "Para que los administradores editen los medios de pago que hay en el sistema",
+              "description": "Para editar propiedades de los medios de pago existentes",
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "id",
+                  "required": true,
+                  "schema": {
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73b"
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                   }
                 }
               }
@@ -765,6 +1010,7 @@ export const swaggerOptions = {
                       }
                     }
                   }
+<<<<<<< HEAD
                 }
               },
               "204": {
@@ -780,12 +1026,18 @@ export const swaggerOptions = {
                       }
                     }
                   }
+=======
+                },
+                "401": {
+                  "description": "Unauthorized",
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                 }
               },
               "401": {
                 "description": "Unauthorized",
               }
             }
+<<<<<<< HEAD
           }
         },
         "/mediosdepago/{id}": {
@@ -840,6 +1092,40 @@ export const swaggerOptions = {
                       "properties": {
                         "err": {
                           "type": "string",
+=======
+          },
+          "/mediosdepago/Eliminar/{id}": {
+            "delete": {
+              "tags": [
+                "MediosDePago"
+              ],
+              "summary": "Para que los administradores eliminen medios de pago del sistema",
+              "description": "Para eliminar alguno de los medios de pago existentes",
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "id",
+                  "description": "Identificador del medio de pago a eliminar",
+                  "required": true,
+                  "schema": {
+                    "type": "string",
+                    "example": "600b365c79bdd616403fc73b"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Ok",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                            "example": "Producto eliminado correctamente"
+                          }
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
                         }
                       }
                     }
@@ -948,6 +1234,7 @@ export const swaggerOptions = {
                 "type": "boolean",
                 "example": "false"
               }
+<<<<<<< HEAD
             }
           },
           "UsuarioLogin": {
@@ -981,6 +1268,48 @@ export const swaggerOptions = {
               "precio": {
                 "type": "number",
                 "example": 4000
+=======
+            },
+            "MedioDePago": {
+              "type": "object",
+              "required": [
+                "nombre"
+              ],
+              "properties": {
+                "nombre": {
+                  "type": "string",
+                  "example": "Daviplata"
+                }
+              }
+            },
+            "Pedido": {
+              "type": "object",
+              "required": [
+                "nombres",
+                "cantidades",
+                "mediodepago",
+                "estado"
+              ],
+              "properties": {
+                "nombres": {
+                  "type": "array",
+                  "items": {},
+                  "example": ["Hamburguesa","Coca cola"],
+                },
+                "cantidades": {
+                  "type": "array",
+                  "items": {},
+                  "example": [3,2],
+                },
+                "mediodepago": {
+                  "type": "string",
+                  "example": "Efectivo"
+                },
+                "estado": {
+                  "type": "string",
+                  "example": "Abierto"
+                }
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
               }
             }
           },
@@ -1045,7 +1374,13 @@ export const swaggerOptions = {
           }
         }
       }
+<<<<<<< HEAD
     }
   },
   apis: ['./src/routes*.js']
 };
+=======
+  },
+  apis: ['./src/routes*.js']
+};
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1

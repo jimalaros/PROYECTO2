@@ -20,4 +20,8 @@ export async function Precio(n, nombres, cantidades) {
     }
 
     return precio;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1

@@ -69,7 +69,11 @@ export const Ordenar = async (req,res) =>
 }
 
 export const ActualizarPedidos = async (req, res) => {
+<<<<<<< HEAD
     try {
+=======
+    try{
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
         const {nombres, cantidades, mediodepago, estado} = req.body;
     
         if(nombres && cantidades && mediodepago && estado)
@@ -85,14 +89,21 @@ export const ActualizarPedidos = async (req, res) => {
             await Agregar.save();
             res.status(201).json({msg: 'Pedido creado con exito'});
         }
+<<<<<<< HEAD
         else {res.status(400).json({msg: 'Faltan Datos'})}    
     } catch (error) {
+=======
+        else {res.status(204).json({msg: 'Faltan Datos'})}
+    }
+    catch (error) {
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
         console.error(error);
         return res.status(500).json(error);
     }
 };
   
 export const EliminarPedidos = async (req, res) => {
+<<<<<<< HEAD
     try {
         const { id } = req.params;
         await Pedido.findByIdAndDelete(id);
@@ -102,3 +113,11 @@ export const EliminarPedidos = async (req, res) => {
         return res.status(500).json(error);
     }
 };
+=======
+    const { id } = req.params;
+  
+    await Pedido.findByIdAndDelete(id);
+  
+    res.status(200).json({msg: "Pedido eliminado con exito"});
+};
+>>>>>>> a5418c99d559fcc9eb8f4889fc5565f852c37ba1
