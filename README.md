@@ -29,10 +29,14 @@ npm i express dotenv bcryptjs jest supertest helmet jsonwebtoken moongose swagge
 npm i @babel/core @babel/cli @babel/node @babel/preset-env
 ```
 
-2. Ejecutar el proyecto con el siguiente comando:
+2. EJECUCIÓN
 
 ```
 npm start
+```
+
+```
+npm test
 ```
 
 3. Dirigirse a la documentación de Swagger en el siguiente [link](https://localhost:5000/api-docs/)
