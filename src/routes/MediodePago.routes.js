@@ -1,14 +1,14 @@
-import { Router } from "express";
+import { Router } from 'express';
+import * as MediosdePago from '../controllers/MediodePago.controller';
+
 const router = Router();
 
-import * as MediosdePago from "../controllers/MediodePago.controller";
+router.get('/', MediosdePago.MediosdePago);
 
-router.get("/", MediosdePago.MediosdePago);
+router.post('/nuevos', MediosdePago.CrearMediodePago);
 
-router.post("/nuevos", MediosdePago.CrearMediodePago);
+router.put('/:id', MediosdePago.ActualizarMediosdePago);
 
-router.put("/:id", MediosdePago.ActualizarMediosdePago);
-
-router.delete("/Eliminar/:id", MediosdePago.EliminarMediosdePago);
+router.delete('/Eliminar/:id', MediosdePago.EliminarMediosdePago);
 
 export default router;
