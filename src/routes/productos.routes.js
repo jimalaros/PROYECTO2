@@ -1,16 +1,15 @@
-import { Router } from "express";
+import { Router } from 'express';
+import { Administrador } from '../middlewares/administrador.middleware';
+import * as Productos from '../controllers/productos.controller';
+
 const router = Router();
 
-import { Administrador } from "../middlewares/administrador.middleware"
+router.get('/', Productos.Productos);
 
-import * as Productos from "../controllers/productos.controller";
+router.post('/nuevos', Administrador, Productos.CrearProducto);
 
-router.get("/", Productos.Productos);
+router.put('/:id', Administrador, Productos.ActualizarProductos);
 
-router.post("/nuevos", Administrador, Productos.CrearProducto);
-
-router.put("/:id", Administrador, Productos.ActualizarProductos);
-
-router.delete("/Eliminar/:id", Administrador, Productos.EliminarProductos);
+router.delete('/Eliminar/:id', Administrador, Productos.EliminarProductos);
 
 export default router;
