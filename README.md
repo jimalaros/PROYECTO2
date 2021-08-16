@@ -31,9 +31,13 @@ npm i @babel/core @babel/cli @babel/node @babel/preset-env
 
 2. EJECUCIÓN
 
+* Para la ejecución de la API
+
 ```
 npm start
 ```
+
+* Para la ejecución de las pruebas unitarias en el endpoint de creación de usuarios
 
 ```
 npm test
