@@ -923,7 +923,7 @@ export const swaggerOptions = {
                 },
                 "administrador": {
                   "type": "boolean",
-                  "example": "false"
+                  "example": false
                 }
               }
             },
