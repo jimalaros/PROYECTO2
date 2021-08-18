@@ -75,7 +75,6 @@ _Para iniciar sesión con el nuevo usuario en la ruta "Login", tendrás que llen
     "contraseña":"2222"
 }
 ```
-Importante: Al registrar un nuevo usuario, este obtendrá un token con el cuál podrás acceder a las demás rutas.
 
 ### Ruta PEDIDOS
 
@@ -108,15 +107,6 @@ De la siguiente manera:
 
 * IMPORTANTE: Si el estado del pedido se envía como "cerrado", en la ruta de edición, no se podrá hacer nada, para editar el pedido el estado tiene que decir "abierto".
 
-_Hay dos maneras de ver tus pedidos:_
-
-1. En la ruta de pedidos, los administradores podrán observar todos los pedidos hechos por todos los usuarios.
-
-_Hay dos rutas de edición de pedidos:_
-
-1. Para que los usuarios editen, recuerda que se crea pedido por id de usuario y se edita de la misma manera, con el id del usuario.
-2. La ruta para que los administradores cambien el estado del pedido de los usuarios.
-
 _Recordatorio_
 
 El único usuario administrador es jimalaros25@gmail.com y su clave es 12345.
@@ -126,6 +116,8 @@ El único usuario administrador es jimalaros25@gmail.com y su clave es 12345.
 * NodeJS
 * Express
 * Swagger
+* Mocha
+* JWT
 
 ## Autores ✒️
 
