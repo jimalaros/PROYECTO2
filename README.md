@@ -31,13 +31,19 @@ npm i @babel/core @babel/cli @babel/node @babel/preset-env
 
 2. EJECUCIÓN
 
-* Para la ejecución de la API
+* Para que el programa se ejecute correctamente tendrás que generar la carpeta dist, ejecutando en consola el siguiente comando.
+
+```
+npx babel src --out-dir dist
+```
+
+* Una vez generada la carpeta dist, ejecutarás la API con el siguiente comando.
 
 ```
 npm start
 ```
 
-* Para la ejecución de las pruebas unitarias en el endpoint de creación de usuarios
+* Para la ejecución de las pruebas unitarias en el endpoint de creación de usuarios ejecutará en consola el siguiente comando.
 
 ```
 npm test
