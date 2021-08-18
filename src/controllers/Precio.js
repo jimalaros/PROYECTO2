@@ -1,4 +1,4 @@
-import Producto from "../models/productos.model";
+import Producto from '../models/productos.model';
 
 export async function Precio(n, nombres, cantidades) {
     //const n = cantidades.length;
