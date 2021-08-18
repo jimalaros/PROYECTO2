@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 import bcrypt from 'bcryptjs';
 
@@ -29,7 +29,6 @@ const usuarioSchema = new Schema({
     },
     administrador: {
         type: Boolean,
-        required: true,
         default: false
     }
 });
